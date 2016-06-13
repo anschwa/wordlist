@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """
@@ -19,6 +20,7 @@ Usage: `python wordlist_chooser.py <number of words to pick>`
 
 """
 
+from __future__ import print_function
 from random import randrange
 from sys import argv
 
@@ -34,15 +36,20 @@ def choose_one():
 
 
 def choose_words(amt=1):
-    for i in xrange(amt):
+    for i in range(amt):
         print(choose_one())
 
 
-try:
-    int(argv[1])  # argv lets us pass in arguments from the command line.
-except IndexError:
-    amt = 1
-else:
-    amt = int(argv[1])
-finally:
-    choose_words(amt)
+def main():
+    try:
+        int(argv[1])
+    except IndexError:
+        amt = 1
+    else:
+        amt = int(argv[1])
+    finally:
+        choose_words(amt)
+
+
+if __name__ == "__main__":
+    main()
